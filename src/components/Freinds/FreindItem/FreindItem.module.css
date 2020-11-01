@@ -1,0 +1,14 @@
+.freind{
+  float: left;
+}
+.freind  a{
+  display: block;
+  width: 30px;
+
+
+}
+.freind  a img{
+  max-width: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+}

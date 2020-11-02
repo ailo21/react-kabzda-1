@@ -16,12 +16,16 @@ function App(props) {
                 <Navbar state={props.state.siteBar}/>
                 <div className="app-wrpper-comtent">
 
-                    <Route exact  path='/dialogs' render={()=><Dialogs state={props.state.dialogsPage}/>}/>
+                    <Route exact  path='/dialogs' render={()=>
+                        <Dialogs
+                            state={props.state.dialogsPage}
+                            dispatch={props.dispatch}
+                        />
+                    }/>
                     <Route path='/profile'
                            render={()=><Profile
                                         state={props.state.profilePage}
-                                        addPost={props.addPost}
-                                        updateNewPostText={props.updateNewPostText}
+                                        dispatch={props.dispatch}
                            />}/>
 
                     <Route path='/news' component={News}/>

@@ -1,6 +1,6 @@
 import profileReducer from "./profile-reducer";
 import dialogReducer from "./dialogs-reducer";
-import sidebarReducer from "./sidebar-reducer"
+import sidebarReducer from "./sidebar-reducer";
 
 let store = {
     _cullSubscriber() {
@@ -66,10 +66,10 @@ let store = {
     },
 
     dispatch(action) { // { type: 'ADD-POST'}
-        debugger;
+
         this._state.profilePage = profileReducer(this._state.profilePage, action);
         this._state.dialogsPage = dialogReducer(this._state.dialogsPage, action);
-        // this._state.siteBar = sidebarReducer(this._state.siteBar, action);
+        this._state.siteBar = sidebarReducer(this._state.siteBar, action);
         this._cullSubscriber(this._state);
 
 

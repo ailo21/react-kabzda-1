@@ -8,10 +8,8 @@ import {addMessageActionCreator, updateNewMessageTextActionCreator} from "../../
 
 const Dialogs = (props) => {
 
-    // debugger;
     let dialogsElement = props.state.dialogs.map((dialog) => <DialogItem id={dialog.id} name={dialog.name}/>)
     let messagesElement = props.state.messages.map((message) => <Message id={message.id} message={message.message}/>)
-
 
     let SandMessage = () => {
         props.dispatch(addMessageActionCreator());

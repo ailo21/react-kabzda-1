@@ -8,8 +8,8 @@ import {BrowserRouter, Route} from "react-router-dom";
 import News from "./components/News";
 
 function App(props) {
-
     return (
+
         <BrowserRouter>
             <div className="app-wrapper">
                   <Header/>

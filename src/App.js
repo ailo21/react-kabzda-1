@@ -6,26 +6,26 @@ import Profile from "./components/Profile/Profile";
 import Dialogs from "./components/Dialogs/Dialogs";
 import {BrowserRouter, Route} from "react-router-dom";
 import News from "./components/News";
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
 function App(props) {
+    debugger;
     return (
 
         <BrowserRouter>
             <div className="app-wrapper">
                   <Header/>
-                <Navbar state={props.state.siteBar}/>
+                <Navbar state={props.store}/>
                 <div className="app-wrpper-comtent">
 
                     <Route exact  path='/dialogs' render={()=>
-                        <Dialogs
-                            state={props.state.dialogsPage}
-                            dispatch={props.dispatch}
+                        <DialogsContainer
+                            store={props.store}
                         />
                     }/>
                     <Route path='/profile'
                            render={()=><Profile
-                                        state={props.state.profilePage}
-                                        dispatch={props.dispatch}
+                                       store={props.store}
                            />}/>
 
                     <Route path='/news' component={News}/>

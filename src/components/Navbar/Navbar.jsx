@@ -4,7 +4,9 @@ import {NavLink} from "react-router-dom";
 import FreindList from "../Freinds/FreindList/FreindList";
 
 const Navbar = (props) => {
-debugger;
+
+    let freinds = props.state.getState().siteBar.friends;
+
     return (
         <nav className={s.nav}>
             <div className={`${s.item} ${s.active}`}>
@@ -15,7 +17,7 @@ debugger;
             <div className={s.item}>
                 <NavLink to="/news" activeClassName={s.active}>News</NavLink>
             </div>
-            <FreindList state={props.state.friends}/>
+            <FreindList state={freinds}/>
         </nav>
     )
 

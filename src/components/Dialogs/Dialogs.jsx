@@ -2,9 +2,6 @@ import React from "react";
 import s from './Dialogs.module.css';
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
-import {addMessageActionCreator, updateNewMessageTextActionCreator} from "../../redux/dialogs-reducer";
-
-
 
 const Dialogs = (props) => {
 
@@ -12,18 +9,17 @@ const Dialogs = (props) => {
     let messagesElement = props.state.messages.map((message) => <Message id={message.id} message={message.message}/>)
 
     let SandMessage = () => {
-        props.dispatch(addMessageActionCreator());
+        props.sandMessageText();
     }
     let newMessageElement = React.createRef();
-    let onMessageChange = () => {
-        let text = newMessageElement.current.value;
-        props.dispatch(updateNewMessageTextActionCreator(text))
+    let onMessageChange = (e) => {
+        let text = e.target.value;
+        props.updateNewMessageText(text);
     }
 
     let _handleKeyDown = (e) => {
         if (e.key === 'Enter') {
-            console.log('do validate');
-            props.dispatch(addMessageActionCreator());
+            props.sandMessageText();
         }
     }
 

@@ -5,7 +5,7 @@ import React from "react";
 const DialogItem = (props) => {
     let path = "/dialogs/" + props.id;
     return (
-        <div className={s.dialog + ' ' + s.active}>
+        <div key={'dd'+props.id} className={s.dialog + ' ' + s.active}>
             <NavLink to={path}>{props.name}</NavLink>
         </div>
     )

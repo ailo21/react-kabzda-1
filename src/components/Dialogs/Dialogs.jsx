@@ -4,9 +4,8 @@ import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 
 const Dialogs = (props) => {
-
-    let dialogsElement = props.state.dialogs.map((dialog) => <DialogItem id={dialog.id} name={dialog.name}/>)
-    let messagesElement = props.state.messages.map((message) => <Message id={message.id} message={message.message}/>)
+    let dialogsElement = props.dialogsPage.dialogs.map((dialog) => <DialogItem id={dialog.id} name={dialog.name}/>)
+    let messagesElement = props.dialogsPage.messages.map((message) => <Message id={message.id} message={message.message}/>)
 
     let SandMessage = () => {
         props.sandMessageText();
@@ -37,7 +36,7 @@ const Dialogs = (props) => {
                     <textarea
                         ref={newMessageElement}
                         onChange={onMessageChange}
-                        value={props.state.newMessageText}
+                        value={props.dialogsPage.newMessageText}
                         onKeyDown={_handleKeyDown}
                         placeholder="Enter text"
 

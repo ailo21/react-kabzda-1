@@ -9,7 +9,6 @@ import News from "./components/News";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
 function App(props) {
-    debugger;
     return (
 
         <BrowserRouter>

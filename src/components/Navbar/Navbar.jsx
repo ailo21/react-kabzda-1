@@ -4,8 +4,8 @@ import {NavLink} from "react-router-dom";
 import FreindList from "../Freinds/FreindList/FreindList";
 
 const Navbar = (props) => {
-
-    let freinds = props.state.getState().siteBar.friends;
+// debugger;
+    let freinds = props.siteBar.friends;
 
     return (
         <nav className={s.nav}>
@@ -16,6 +16,9 @@ const Navbar = (props) => {
                 <NavLink to="/dialogs" activeClassName={s.active}>Mesage</NavLink></div>
             <div className={s.item}>
                 <NavLink to="/news" activeClassName={s.active}>News</NavLink>
+            </div>
+            <div className={s.item}>
+                <NavLink to="/users" activeClassName={s.active}>Users</NavLink>
             </div>
             <FreindList state={freinds}/>
         </nav>

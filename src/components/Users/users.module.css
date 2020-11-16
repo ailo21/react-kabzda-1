@@ -1,0 +1,14 @@
+.user_list{
+    margin-left: 20px;
+    margin-top: 20px;
+}
+.user{
+    display: flex;
+    padding: 20px;
+    border: 1px solid #ccc;
+    margin-bottom: 30px;
+}
+.user_left img{
+    max-width: 90px;
+}
+.user_right{}

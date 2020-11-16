@@ -4,7 +4,7 @@ import React from "react";
 const Message = (props) => {
 
     return (
-        <div key={props.id}>
+        <div>
             <div className={s.message}>{props.message}</div>
 
         </div>

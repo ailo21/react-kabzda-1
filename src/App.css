@@ -12,4 +12,6 @@
 
 .app-wrpper-comtent{
   grid-area: c;
+  position: relative;
+  min-height: calc(100vh - 100px);
 }

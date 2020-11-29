@@ -1,0 +1,11 @@
+.preloader_block{
+    background: #fff;
+    opacity:.7;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

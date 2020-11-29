@@ -5,7 +5,7 @@ import {NavLink} from "react-router-dom";
 import {userAPI} from "../../api/api";
 
 let Users = (props) => {
-    debugger;
+    // debugger;
 
     let pagesCount = Math.ceil(props.totalUserCount / props.pageSize);
     let pages = [];
@@ -37,23 +37,28 @@ let Users = (props) => {
                             </div>
                             <div>
                                 {u.followed ?
-                                    <button onClick={() => {
+                                    <button disabled={props.isFollowingProgress?.some(id => id === u.id)} onClick={() => {
+
+                                        props.toggleIsFollowingProgress(true, u.id);
 
                                         userAPI.deleteFollow(u.id)
                                             .then(respnse => {
                                                 if (respnse.resultCode === 0) {
                                                     props.followToggle(u.id)
                                                 }
+                                                props.toggleIsFollowingProgress(false, u.id);
                                             });
                                     }
                                     }>unfollow</button>
                                     :
-                                    <button onClick={() => {
+                                    <button disabled={props.isFollowingProgress?.some(id => id === u.id)} onClick={() => {
+                                        props.toggleIsFollowingProgress(true, u.id);
                                         userAPI.postFollow(u.id)
                                             .then(respnse => {
                                                 if (respnse.resultCode === 0) {
                                                     props.followToggle(u.id)
                                                 }
+                                                props.toggleIsFollowingProgress(false, u.id);
                                             });
                                     }
                                     }>follow</button>

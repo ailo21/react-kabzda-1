@@ -19,18 +19,16 @@ export const userAPI = {
     deleteFollow(userId) {
         return instance.delete(`follow/${userId}`)
             .then(response => response.data);
-    }
-}
-
-export const commonAPI = {
-    getAuthMe() {
-        return instance.get(`auth/me`)
+    },
+    getProfile(userId) {
+        return instance.get(`profile/${userId}`)
             .then(response => response.data);
     }
 }
-export const profileAPI = {
-    getProfile(userId) {
-        return instance.get(`profile/${userId}`)
+
+export const authAPI = {
+    getAuthMe() {
+        return instance.get(`auth/me`)
             .then(response => response.data);
     }
 }

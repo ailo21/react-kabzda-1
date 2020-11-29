@@ -1,12 +1,15 @@
 import React from "react";
 import s from "./users.module.css";
 import userNoPhotoSmall from "../../asstes/img/user_nophoto_small.png";
+import {NavLink} from "react-router-dom";
+import {userAPI} from "../../api/api";
 
 let Users = (props) => {
+    debugger;
 
     let pagesCount = Math.ceil(props.totalUserCount / props.pageSize);
     let pages = [];
-    for (let i = 1; i <= pagesCount && i<21; i++) {
+    for (let i = 1; i <= pagesCount && i < 21; i++) {
         pages.push(i);
     }
 
@@ -26,11 +29,35 @@ let Users = (props) => {
             props.users.map(u => (
                     <div key={u.id} className={s.user}>
                         <div className={s.user_left}>
-                            <div><img src={u.photos.small != null ? u.photos.small : userNoPhotoSmall} alt=""/></div>
                             <div>
-                                <button onClick={() => {
-                                    props.followToggle(u.id)
-                                }}>{u.followed ? 'unfollow' : 'follow'}</button>
+                                <NavLink to={'/profile/' + u.id}>
+                                    <img src={u.photos.small != null ? u.photos.small : userNoPhotoSmall} alt=""/>
+                                </NavLink>
+
+                            </div>
+                            <div>
+                                {u.followed ?
+                                    <button onClick={() => {
+
+                                        userAPI.deleteFollow(u.id)
+                                            .then(respnse => {
+                                                if (respnse.resultCode === 0) {
+                                                    props.followToggle(u.id)
+                                                }
+                                            });
+                                    }
+                                    }>unfollow</button>
+                                    :
+                                    <button onClick={() => {
+                                        userAPI.postFollow(u.id)
+                                            .then(respnse => {
+                                                if (respnse.resultCode === 0) {
+                                                    props.followToggle(u.id)
+                                                }
+                                            });
+                                    }
+                                    }>follow</button>
+                                }
                             </div>
                         </div>
                         <div className={s.user_right}>
@@ -45,4 +72,4 @@ let Users = (props) => {
         }
     </div>
 }
-export  default Users;
+export default Users;

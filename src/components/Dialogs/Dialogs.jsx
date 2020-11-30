@@ -2,6 +2,8 @@ import React from "react";
 import s from './Dialogs.module.css';
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
+import {Redirect} from "react-router-dom";
+
 
 const Dialogs = (props) => {
     let dialogsElement = props.dialogsPage.dialogs.map((dialog) => <DialogItem key={dialog.id} id={dialog.id} name={dialog.name}/>)
@@ -21,7 +23,6 @@ const Dialogs = (props) => {
             props.sandMessageText();
         }
     }
-
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>

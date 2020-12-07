@@ -3,13 +3,14 @@ import s from './Profile.module.css';
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 import {Redirect} from "react-router-dom";
+import {updateStatus} from "../../redux/profile-reducer";
 
 
 const Profile = (props) => {
 
     return (
         <div>
-            <ProfileInfo profile={props.profile}/>
+            <ProfileInfo profile={props.profile} status={props.status} updateStatus={props.updateStatus}/>
             <MyPostsContainer
                 store={props.store}
             />

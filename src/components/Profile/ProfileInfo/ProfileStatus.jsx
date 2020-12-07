@@ -1,36 +1,53 @@
 import React from "react";
 
 class ProfileStatus extends React.Component {
+
+
     state = {
-        editMode: false
+        editMode: false,
+        status: this.props.status
     }
 
-    toggleEditMode() {
+    activeEditMode = () => {
         this.setState({
-            editMode: (!this.state.editMode)
+            editMode: true
+        })
+    }
+    deActiveEditMode = () => {
+        this.setState({
+            editMode: false
+        })
+        this.props.updateStatus(this.state.status);
+
+    }
+    onStatusChange = (e) => {
+        this.setState({
+            status: e.currentTarget.value
         })
     }
 
     render() {
+        // debugger;
         return (
             <div>
                 {
                     this.state.editMode ?
                         <div>
-                            <input autoFocus={true} onBlur={this.toggleEditMode.bind(this)} type="text" value={this.props.status}/>
+                            <input onChange={this.onStatusChange} autoFocus={true} onBlur={this.deActiveEditMode}
+                                   type="text" value={this.state.status}/>
                         </div>
                         :
                         <div>
-                            <span onDoubleClick={this.toggleEditMode.bind(this)}>{this.props.status}</span>
+                            <div onDoubleClick={this.activeEditMode}>
+                                {
+                                    this.props.status || <i>set a status message</i>
+                                }</div>
                         </div>
                 }
-
-
             </div>
         )
     }
-
-
 }
+
 
 export default ProfileStatus;

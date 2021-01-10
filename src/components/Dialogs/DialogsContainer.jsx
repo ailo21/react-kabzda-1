@@ -17,8 +17,8 @@ let mapDispatchToProps = (dispatch) => {
         updateNewMessageText: (text) => {
             dispatch(updateNewMessageTextActionCreator(text))
         },
-        sandMessageText: () => {
-            dispatch(addMessageActionCreator());
+        sandMessageText: (NewMessageText) => {
+            dispatch(addMessageActionCreator(NewMessageText));
         }
     }
 }

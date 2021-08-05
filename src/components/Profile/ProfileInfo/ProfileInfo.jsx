@@ -2,7 +2,7 @@ import React from "react";
 import s from './ProfileInfo.module.css';
 import Preloader from "../../Common/Preloader";
 import ProfileStatus from './ProfileStatus';
-import {updateStatus} from "../../../redux/profile-reducer";
+// import {updateStatus} from "../../../redux/profile-reducer";
 
 const ProfileInfo = (props) => {
     if (!props.profile) {

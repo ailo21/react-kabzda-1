@@ -4,7 +4,7 @@ import {NavLink} from "react-router-dom";
 import Header from "./Header";
 import * as axios from "axios";
 import {connect} from "react-redux";
-import {setAuthUserData} from "../../redux/auth-reducer";
+import {logout, setAuthUserData} from "../../redux/auth-reducer";
 import {authAPI} from "../../api/api";
 
 class HeaderContainer extends React.Component {
@@ -15,7 +15,7 @@ class HeaderContainer extends React.Component {
                     if (data.resultCode === 0) {
                         let {id, login, email} = data.data;
                         // debugger;
-                        this.props.setAuthUserData(id, email, login)
+                        this.props.setAuthUserData(id, email, login,true)
                     }
                 }
             )
@@ -32,4 +32,4 @@ const mapStateToProps = (state) => ({
     login: state.auth.login
 });
 
-export default connect(mapStateToProps, {setAuthUserData})(HeaderContainer);
+export default connect(mapStateToProps, {setAuthUserData,logout})(HeaderContainer);

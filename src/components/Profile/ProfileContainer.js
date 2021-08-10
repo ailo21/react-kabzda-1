@@ -11,7 +11,7 @@ class ProfileContainer extends React.Component {
         var userId = this.props.match.params.userId
         // userId = userId ?? 2;
         if(!userId){
-            userId=12909;
+            userId=this.props.authorizeUserId;
         }
         userAPI.getProfile(userId).then(data => {
             this.props.setUserProfile(data);
@@ -28,7 +28,9 @@ class ProfileContainer extends React.Component {
 
 let mapStateToProps = (state) => ({
     profile: state.profilePage.profile,
-    status: state.profilePage.status
+    status: state.profilePage.status,
+    authorizeUserId: state.auth.userId,
+    isAuth: state.auth.isAuth
 });
 
 export default compose(

@@ -12,6 +12,9 @@ class ProfileContainer extends React.Component {
         // userId = userId ?? 2;
         if(!userId){
             userId=this.props.authorizeUserId;
+            if(!userId){
+                this.props.history.push("/login");
+            }
         }
         userAPI.getProfile(userId).then(data => {
             this.props.setUserProfile(data);

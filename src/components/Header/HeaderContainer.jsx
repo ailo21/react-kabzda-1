@@ -1,26 +1,12 @@
 import React from 'react';
 import s from './Header.module.css'
-import {NavLink} from "react-router-dom";
 import Header from "./Header";
-import * as axios from "axios";
+
 import {connect} from "react-redux";
 import {logout, setAuthUserData} from "../../redux/auth-reducer";
-import {authAPI} from "../../api/api";
+
 
 class HeaderContainer extends React.Component {
-    componentDidMount() {
-        authAPI.getAuthMe()
-            .then(data => {
-
-                    if (data.resultCode === 0) {
-                        let {id, login, email} = data.data;
-                        // debugger;
-                        this.props.setAuthUserData(id, email, login,true)
-                    }
-                }
-            )
-
-    }
 
     render() {
         return <Header {...this.props}/>

@@ -72,5 +72,5 @@ export default compose(
             getUsersThunkCreator
         }
     ),
-    withAuthRedirect
+    // withAuthRedirect
 )(UsersContainer);

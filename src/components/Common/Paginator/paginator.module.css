@@ -1,0 +1,8 @@
+.pager{
+    display: inline-block;
+    padding: 0 3px;
+    cursor: pointer;
+}
+.pager_selected{
+    font-weight: bold;
+}

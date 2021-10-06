@@ -42,10 +42,10 @@ class ProfileStatus extends React.Component {
                         </div>
                         :
                         <div>
-                            <div onDoubleClick={this.activeEditMode}>
+                            <span onDoubleClick={this.activeEditMode}>
                                 {
                                     this.props.status || <i>set a status message</i>
-                                }</div>
+                                }</span>
                         </div>
                 }
             </div>

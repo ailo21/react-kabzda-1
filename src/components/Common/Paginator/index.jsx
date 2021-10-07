@@ -6,10 +6,10 @@ let Paginator = ({totalItemCount, pageSize, currentPage, onPageChanged, portionS
     let pagesCount = Math.ceil(totalItemCount / pageSize);
 
     let leftNumber = portion * portionSize + 1;
-    let rightNumber = portion * portionSize + pageSize;
+    let rightNumber = leftNumber + portionSize-1;
 
     let goToLeftPortionDisabled=portion<1;
-    let goToRightPortionDisabled=portion>=pagesCount;
+    let goToRightPortionDisabled=portion>=(pagesCount-1);
 
     let pages = [];
     for (let i = 1; i <= pagesCount; i++) {

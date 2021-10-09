@@ -5,7 +5,7 @@ import s from "./preloade.module.css";
 let Preloader=()=>{
     return(
         <div className={s.preloader_block}>
-            <img src={Loader} alt={'test'}/>
+            <img src={Loader} alt={'loading...'}/>
         </div>
 
     );

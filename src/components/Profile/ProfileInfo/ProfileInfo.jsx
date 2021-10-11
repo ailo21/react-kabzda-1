@@ -1,21 +1,25 @@
 import React from "react";
 import s from './ProfileInfo.module.css';
 import Preloader from "../../Common/Preloader";
-import ProfileStatus from './ProfileStatus';
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
-// import {updateStatus} from "../../../redux/profile-reducer";
+import userNoPhotoSmall from "../../../asstes/img/user_nophoto_small.png";
 
 const ProfileInfo = (props) => {
     if (!props.profile) {
         return <Preloader/>
     }
+    const onMainPhotoSelected=(e)=>{
+        if(e.target.files.length){
+            props.savePhoto(e.target.files[0]);
+        }
+    }
     return (
-
         <div>
-
             <div className={s.descriptionBlock}>ava + description</div>
-            <img src={props.profile.photos.large} alt=""/>
-            <ProfileStatusWithHooks status={props.status}  updateStatus={props.updateStatus}/>
+            <img className={s.avatar}
+                 src={props.profile.photos!==undefined ? props.profile.photos.large : userNoPhotoSmall} alt=""/>
+            {props.isOwner && <input type={"file"} onChange={onMainPhotoSelected}/> }
+            <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
             <h4>{props.profile.fullName}</h4>
             {
                 props.profile.lookingForAJob ?
